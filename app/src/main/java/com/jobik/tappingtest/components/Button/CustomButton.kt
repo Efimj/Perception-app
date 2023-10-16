@@ -24,11 +24,12 @@ import com.jobik.tappingtest.ui.theme.CustomTheme
 @Composable
 fun CustomButton(
     modifier: Modifier = Modifier,
-    text: String?,
+    text: String? = null,
     icon: ImageVector? = null,
     onClick: () -> Unit,
     isActive: Boolean = false,
     isEnabled: Boolean = true,
+    contentDescription: String = "button icon"
 ) {
     val backgroundColor = if (isActive) CustomTheme.Colors.active else CustomTheme.Colors.secondaryBackground
     val foregroundColor = if (isActive) CustomTheme.Colors.textOnActive else CustomTheme.Colors.text
@@ -52,7 +53,7 @@ fun CustomButton(
             containerColor = containerColor.value,
             contentColor = contentColor.value
         ),
-        shape = RoundedCornerShape(10.dp)
+        shape = RoundedCornerShape(10.dp),
     ) {
         Row(
             modifier = modifier.fillMaxWidth(),
@@ -63,7 +64,7 @@ fun CustomButton(
                 Icon(
                     imageVector = icon,
                     modifier = Modifier.size(25.dp),
-                    contentDescription = "drawable icons",
+                    contentDescription = contentDescription,
                 )
             if (text != null && icon != null)
                 Spacer(modifier = Modifier.width(6.dp))
