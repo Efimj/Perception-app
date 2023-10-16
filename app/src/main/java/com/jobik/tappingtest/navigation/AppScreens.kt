@@ -1,6 +1,5 @@
 package com.jobik.tappingtest.navigation
 
-import android.util.Log
 import androidx.annotation.Keep
 
 @Keep
@@ -11,9 +10,7 @@ sealed class AppScreens(val route: String) {
     data object Settings : AppScreens(route = "Settings")
 
     object Routes {
-        val navigationBarRoutes = listOf(MainScreen, Statistics, Statistics)
-        val secondaryRoutes = listOf(TappingTestScreen)
-
+        val navigationBarRoutes = listOf(MainScreen, Statistics, Settings)
         /**
          * @routeName1 first route
          * @routeName2 second route
@@ -31,8 +28,8 @@ sealed class AppScreens(val route: String) {
             return null
         }
 
-        fun isSecondaryRoute(route: String): Boolean {
-            return secondaryRoutes.any { it.route.substringBefore("/") == route }
+        fun isNavigationBarRoute(route: String): Boolean {
+            return navigationBarRoutes.any { it.route.substringBefore("/") == route }
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import com.jobik.tappingtest.screens.Main.MainScreen
 import com.jobik.tappingtest.screens.Settings.SettingsScreen
 import com.jobik.tappingtest.screens.Statistics.StatisticsScreen
+import com.jobik.tappingtest.screens.TappingTest.TappingTestScreen
 
 @Composable
 fun SetupNavGraph(
@@ -69,6 +70,14 @@ fun SetupNavGraph(
             exitTransition = { slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(200)) }
         ) {
             SettingsScreen(navController)
+        }
+
+        composable(
+            route = AppScreens.TappingTestScreen.route,
+            //enterTransition = { slideInHorizontally(initialOffsetX = { it }, animationSpec = tween(200)) },
+            //exitTransition = { slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(200)) }
+        ) {
+            TappingTestScreen(navController)
         }
     }
 }
