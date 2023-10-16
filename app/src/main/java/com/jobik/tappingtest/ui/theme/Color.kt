@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 val baseLightColors = CustomThemeColors(
     active = Color(0xFF4284f5),
-    mainBackground = Color(0xFFFFFFFF),
+    mainBackground = Color(0xFFECEEEF),
     secondaryBackground = Color(0xFFFFFFFF),
     stroke = Color(0xFFD2D2D2),
     secondaryStroke = Color(0xFFD2D2D2),
