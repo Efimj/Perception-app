@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -24,14 +25,13 @@ fun SettingsItem(
     onClick: (() -> Unit) = {},
     action: @Composable () -> Unit
 ) {
-    Card(onClick = onClick) {
+    Card(onClick = onClick, shape = RectangleShape) {
         Row(
             modifier = Modifier.fillMaxWidth().background(CustomTheme.Colors.secondaryBackground)
-                .padding(vertical = 5.dp)
-                .padding(end = 15.dp),
+                .padding(vertical = 5.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Row(modifier = Modifier.padding(horizontal = 15.dp)) {
+            Row(modifier = Modifier.padding(horizontal = 20.dp)) {
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
@@ -47,16 +47,21 @@ fun SettingsItem(
                     overflow = TextOverflow.Ellipsis,
                     color = CustomTheme.Colors.text
                 )
-                Spacer(modifier = Modifier.height(2.dp))
+                Spacer(modifier = Modifier.height(3.dp))
                 Text(
                     text = description,
-                    fontSize = 15.sp,
-                    maxLines = 1,
+                    fontSize = 14.sp,
                     overflow = TextOverflow.Ellipsis,
                     color = CustomTheme.Colors.textSecondary
                 )
             }
-            action()
+            Row(
+                modifier = Modifier.padding(horizontal = 20.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                action()
+            }
         }
     }
 }
