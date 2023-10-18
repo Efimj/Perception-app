@@ -2,6 +2,7 @@ package com.jobik.tappingtest.screens.Main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -11,15 +12,20 @@ import androidx.navigation.NavController
 import com.jobik.tappingtest.ui.components.cards.TestPreviewCard.TestDescription
 import com.jobik.tappingtest.ui.components.cards.TestPreviewCard.TestPreviewCard
 import com.jobik.tappingtest.navigation.AppScreens
+import com.jobik.tappingtest.ui.components.bars.NavigationBottomBar.BottomAppBarHeight
 import com.jobik.tappingtest.ui.theme.CustomTheme
-import com.jobik.tappingtest.ui.theme.PageListContentPadding
 
 @Composable
 fun MainScreen(navController: NavController) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().background(CustomTheme.Colors.mainBackground),
         verticalArrangement = Arrangement.spacedBy(10.dp),
-        contentPadding = PageListContentPadding
+        contentPadding =  PaddingValues(
+            start = 10.dp,
+            end = 10.dp,
+            top = 10.dp,
+            bottom = (BottomAppBarHeight + 40).dp
+        )
     ) {
         item {
             TestPreviewCard(

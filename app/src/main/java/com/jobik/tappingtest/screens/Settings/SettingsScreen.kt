@@ -8,21 +8,15 @@ import androidx.compose.material.icons.outlined.Brightness6
 import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SwitchDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.jobik.tappingtest.ui.components.bars.NavigationBottomBar.BottomAppBarHeight
 import com.jobik.tappingtest.ui.components.buttons.Switch.CustomSwitch
 import com.jobik.tappingtest.ui.components.cards.SettingsItem.SettingsItem
 import com.jobik.tappingtest.ui.theme.CustomTheme
-import com.jobik.tappingtest.ui.theme.PageContentPadding
 import com.jobik.tappingtest.utils.ThemeUtil.ThemeUtil
 
 @Composable
@@ -30,7 +24,14 @@ fun SettingsScreen(navController: NavController) {
     val context = LocalContext.current
 
     Column(
-        modifier = Modifier.fillMaxSize().background(CustomTheme.Colors.mainBackground).padding(PageContentPadding)
+        modifier = Modifier.fillMaxSize().background(CustomTheme.Colors.mainBackground).padding(
+            PaddingValues(
+                start = 0.dp,
+                end = 0.dp,
+                top = 10.dp,
+                bottom = (BottomAppBarHeight + 40).dp
+            )
+        )
     ) {
         SettingsItem(
             icon = Icons.Outlined.Brightness6,

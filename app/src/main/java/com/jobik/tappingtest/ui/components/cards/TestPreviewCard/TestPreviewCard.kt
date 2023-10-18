@@ -30,7 +30,8 @@ fun TestPreviewCard(
         colors = CardDefaults.cardColors(
             contentColor = CustomTheme.Colors.text,
             containerColor = CustomTheme.Colors.secondaryBackground
-        )
+        ),
+        shape = CustomTheme.Shapes.large
     ) {
         Column(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp, horizontal = 20.dp)) {
             Text(text = testDescription.title, fontSize = 20.sp, overflow = TextOverflow.Ellipsis, maxLines = 1)

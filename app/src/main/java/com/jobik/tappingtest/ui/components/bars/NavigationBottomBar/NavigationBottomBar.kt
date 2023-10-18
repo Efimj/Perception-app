@@ -19,7 +19,7 @@ import com.jobik.tappingtest.ui.components.buttons.Button.CustomButton
 import com.jobik.tappingtest.navigation.AppScreens
 import com.jobik.tappingtest.ui.theme.CustomTheme
 
-const val BottomAppBarHeight = 65
+const val BottomAppBarHeight = 60
 
 @Composable
 fun NavigationBottomBar(
@@ -28,7 +28,7 @@ fun NavigationBottomBar(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     Row(
-        modifier = Modifier.height(65.dp).fillMaxWidth()
+        modifier = Modifier.height(BottomAppBarHeight.dp).fillMaxWidth()
             .clip(shape = RoundedCornerShape(17.dp, 17.dp, 0.dp, 0.dp))
             .background(CustomTheme.Colors.secondaryBackground).padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,

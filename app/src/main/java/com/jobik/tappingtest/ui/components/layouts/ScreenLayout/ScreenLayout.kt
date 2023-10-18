@@ -32,14 +32,15 @@ fun ScrenLayout() {
     val navController = rememberNavController()
     val currentRoute =
         (navController.currentBackStackEntryAsState().value?.destination?.route ?: "").substringBefore("/")
-    val isBarHide = AppScreens.Routes.isNavigationBarRoute(currentRoute)
+    val isNavigationBarHide = AppScreens.Routes.isNavigationBarRoute(currentRoute)
+    val isTopBarHide = AppScreens.Routes.isTopBarRoute(currentRoute)
 
-    val offsetYTopBar by animateDpAsState(
-        if (!isBarHide) -(TopAppBarHeight).dp else 0.dp,
+    val offsetYBottomBar by animateDpAsState(
+        if (!isNavigationBarHide) (BottomAppBarHeight).dp else 0.dp,
         animationSpec = TweenSpec(durationMillis = 200), label = ""
     )
-    val offsetYBottomBar by animateDpAsState(
-        if (!isBarHide) (BottomAppBarHeight).dp else 0.dp,
+    val offsetYTopBar by animateDpAsState(
+        if (!isTopBarHide) -(TopAppBarHeight).dp else 0.dp,
         animationSpec = TweenSpec(durationMillis = 200), label = ""
     )
 

@@ -25,7 +25,7 @@ fun SettingsItem(
     onClick: (() -> Unit) = {},
     action: @Composable () -> Unit
 ) {
-    Card(onClick = onClick, shape = RectangleShape) {
+    Card(onClick = onClick, shape = CustomTheme.Shapes.none) {
         Row(
             modifier = Modifier.fillMaxWidth().background(CustomTheme.Colors.secondaryBackground)
                 .padding(vertical = 5.dp),

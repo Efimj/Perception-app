@@ -11,6 +11,8 @@ sealed class AppScreens(val route: String) {
 
     object Routes {
         val navigationBarRoutes = listOf(MainScreen, Statistics, Settings)
+        val topBarRoutes: List<AppScreens> = emptyList()
+
         /**
          * @routeName1 first route
          * @routeName2 second route
@@ -30,6 +32,10 @@ sealed class AppScreens(val route: String) {
 
         fun isNavigationBarRoute(route: String): Boolean {
             return navigationBarRoutes.any { it.route.substringBefore("/") == route }
+        }
+
+        fun isTopBarRoute(route: String): Boolean {
+            return topBarRoutes.any { it.route.substringBefore("/") == route }
         }
     }
 }

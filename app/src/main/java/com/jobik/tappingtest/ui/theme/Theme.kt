@@ -34,6 +34,7 @@ fun TappingTestTheme(
 
     CompositionLocalProvider(
         LocalCustomThemeColors provides colors,
+        LocalCustomThemeShapes provides Shapes,
         content = content
     )
 }

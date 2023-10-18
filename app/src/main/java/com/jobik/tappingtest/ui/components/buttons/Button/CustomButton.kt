@@ -2,8 +2,8 @@ package com.jobik.tappingtest.ui.components.buttons.Button
 
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -13,6 +13,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -30,10 +32,14 @@ fun CustomButton(
     onClick: () -> Unit,
     isActive: Boolean = false,
     isEnabled: Boolean = true,
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    shape: Shape = CustomTheme.Shapes.small,
+    border: BorderStroke? = null,
+    contentColor: Color = CustomTheme.Colors.text,
     contentDescription: String = "button icon"
 ) {
     val backgroundColor = if (isActive) CustomTheme.Colors.active else CustomTheme.Colors.secondaryBackground
-    val foregroundColor = if (isActive) CustomTheme.Colors.textOnActive else CustomTheme.Colors.text
+    val foregroundColor = if (isActive) CustomTheme.Colors.textOnActive else contentColor
 
     val containerColor = remember { Animatable(backgroundColor) }
     val contentColor = remember { Animatable(foregroundColor) }
@@ -62,7 +68,9 @@ fun CustomButton(
             containerColor = containerColor.value,
             contentColor = contentColor.value
         ),
-        shape = RoundedCornerShape(10.dp),
+        shape = shape,
+        border = border,
+        contentPadding = contentPadding,
     ) {
         Row(
             modifier = modifier.fillMaxWidth(),
