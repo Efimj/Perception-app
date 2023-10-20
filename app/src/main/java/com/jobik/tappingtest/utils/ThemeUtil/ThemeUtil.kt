@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import com.jobik.tappingtest.SharedPreferences.ApplicationStorageName
-import com.jobik.tappingtest.SharedPreferences.ApplicationUiMode
+import com.jobik.tappingtest.application.SharedPreferences.ApplicationStorageName
+import com.jobik.tappingtest.application.SharedPreferences.ApplicationUiMode
 
 object ThemeUtil {
     private var _isDarkMode: MutableState<Boolean?> = mutableStateOf(null)

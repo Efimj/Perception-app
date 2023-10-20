@@ -8,7 +8,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.jobik.tappingtest.ui.components.layouts.ScreenLayout.ScrenLayout
 import com.jobik.tappingtest.ui.theme.TappingTestTheme
 import com.jobik.tappingtest.utils.ThemeUtil.ThemeUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
