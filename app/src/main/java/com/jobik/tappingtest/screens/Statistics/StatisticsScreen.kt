@@ -144,14 +144,24 @@ fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewMode
                 ),
                 shape = CustomTheme.Shapes.large
             ) {
-                val chartEntryModel =
-                    entryModelOf(
-                        *(addIntermediatePoints(
-                            points = listOf(4f, 12f, 8f, 16f),
-                            desiredSize = 10
-                        ).toTypedArray())
+                Column(modifier = Modifier.padding(13.dp)) {
+                    Text(
+                        text = "Tapping test",
+                        fontSize = 20.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = CustomTheme.Colors.text
                     )
-                CustomLineChart(chartEntryModel = chartEntryModel, modifier = Modifier.padding(12.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
+                    val chartEntryModel =
+                        entryModelOf(
+                            *(addIntermediatePoints(
+                                points = listOf(4f, 12f, 8f, 16f),
+                                desiredSize = 10
+                            ).toTypedArray())
+                        )
+                    CustomLineChart(chartEntryModel = chartEntryModel)
+                }
             }
         }
     }

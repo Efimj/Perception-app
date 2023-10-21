@@ -14,6 +14,7 @@ import com.patrykandpatrick.vico.compose.chart.layout.fullWidth
 import com.patrykandpatrick.vico.compose.chart.line.lineChart
 import com.patrykandpatrick.vico.compose.component.shape.shader.fromBrush
 import com.patrykandpatrick.vico.compose.component.textComponent
+import com.patrykandpatrick.vico.compose.dimensions.dimensionsOf
 import com.patrykandpatrick.vico.core.DefaultAlpha
 import com.patrykandpatrick.vico.core.axis.AxisItemPlacer
 import com.patrykandpatrick.vico.core.chart.layout.HorizontalLayout
@@ -26,6 +27,7 @@ import com.patrykandpatrick.vico.core.entry.ChartEntryModel
 fun CustomLineChart(chartEntryModel: ChartEntryModel, modifier: Modifier = Modifier) {
     Chart(
         modifier = modifier,
+        isZoomEnabled = false,
         horizontalLayout = HorizontalLayout.fullWidth(), //HorizontalLayout.fullWidth(startPadding = 5.dp, endPadding = 5.dp),
         chart = lineChart(
             lines = listOf(
@@ -47,6 +49,12 @@ fun CustomLineChart(chartEntryModel: ChartEntryModel, modifier: Modifier = Modif
             label = textComponent(
                 color = CustomTheme.Colors.textSecondary,
                 textSize = 14.sp,
+                padding = dimensionsOf(end = 3.dp)
+            ),
+            tick = LineComponent(
+                color = CustomTheme.Colors.stroke.toArgb(),
+                thicknessDp = 1.dp.value,
+                strokeColor = CustomTheme.Colors.stroke.toArgb(),
             ),
             axis = LineComponent(
                 color = CustomTheme.Colors.stroke.toArgb(),
@@ -63,6 +71,12 @@ fun CustomLineChart(chartEntryModel: ChartEntryModel, modifier: Modifier = Modif
             label = textComponent(
                 color = CustomTheme.Colors.textSecondary,
                 textSize = 14.sp,
+                padding = dimensionsOf(top = 0.dp)
+            ),
+            tick = LineComponent(
+                color = CustomTheme.Colors.stroke.toArgb(),
+                thicknessDp = 1.dp.value,
+                strokeColor = CustomTheme.Colors.stroke.toArgb(),
             ),
             axis = LineComponent(
                 color = CustomTheme.Colors.stroke.toArgb(),
