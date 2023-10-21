@@ -19,6 +19,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.DefaultAlpha
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -27,9 +30,25 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import coil.size.Dimension
 import com.jobik.tappingtest.ui.components.bars.NavigationBottomBar.BottomAppBarHeight
 import com.jobik.tappingtest.ui.components.buttons.Button.CustomButton
 import com.jobik.tappingtest.ui.theme.CustomTheme
+import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
+import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
+import com.patrykandpatrick.vico.compose.chart.Chart
+import com.patrykandpatrick.vico.compose.chart.line.lineChart
+import com.patrykandpatrick.vico.compose.component.shape.shader.fromBrush
+import com.patrykandpatrick.vico.compose.component.textComponent
+import com.patrykandpatrick.vico.compose.dimensions.dimensionsOf
+import com.patrykandpatrick.vico.core.chart.dimensions.HorizontalDimensions
+import com.patrykandpatrick.vico.core.chart.line.LineChart
+import com.patrykandpatrick.vico.core.component.shape.LineComponent
+import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
+import com.patrykandpatrick.vico.core.component.text.TextComponent
+import com.patrykandpatrick.vico.core.component.text.textComponent
+import com.patrykandpatrick.vico.core.dimensions.Dimensions
+import com.patrykandpatrick.vico.core.entry.entryModelOf
 
 @Composable
 fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewModel = hiltViewModel()) {
@@ -112,10 +131,72 @@ fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewMode
                             horizontalArrangement = Arrangement.SpaceAround
                         ) {
                             ItemCard(header = "Finished", value = "13")
-                            ItemCard(header = "All", value = "123")
-                            ItemCard(header = "Time", value = "2023")
+                            ItemCard(header = "Progress", value = "23%")
+                            ItemCard(header = "Time", value = "2023m")
                         }
                     }
+                }
+            }
+            item { Spacer(modifier = Modifier.height(20.dp)) }
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        contentColor = CustomTheme.Colors.text,
+                        containerColor = CustomTheme.Colors.secondaryBackground
+                    ),
+                    shape = CustomTheme.Shapes.large
+                ) {
+                    val chartEntryModel = entryModelOf(4f, 12f, 8f, 16f)
+                    Chart(
+                        modifier = Modifier.padding(12.dp),
+                        chart = lineChart(
+                            lines = listOf(
+                                LineChart.LineSpec(
+                                    lineColor = CustomTheme.Colors.active.toArgb(),
+                                    lineBackgroundShader = DynamicShaders.fromBrush(
+                                        brush = Brush.verticalGradient(
+                                            listOf(
+                                                CustomTheme.Colors.active.copy(com.patrykandpatrick.vico.core.DefaultAlpha.LINE_BACKGROUND_SHADER_START),
+                                                CustomTheme.Colors.text.copy(com.patrykandpatrick.vico.core.DefaultAlpha.LINE_BACKGROUND_SHADER_END)
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        model = chartEntryModel,
+                        startAxis = rememberStartAxis(
+                            label = textComponent(
+                                color = CustomTheme.Colors.text,
+                                textSize = 14.sp,
+                            ),
+                            axis = LineComponent(
+                                color = CustomTheme.Colors.stroke.toArgb(),
+                                thicknessDp = 1.dp.value,
+                                strokeColor = CustomTheme.Colors.stroke.toArgb(),
+                            ),
+                            guideline = LineComponent(
+                                color = CustomTheme.Colors.stroke.toArgb(),
+                                thicknessDp = 1.dp.value,
+                            ),
+                        ),
+                        bottomAxis = rememberBottomAxis(
+                            label = textComponent(
+                                color = CustomTheme.Colors.text,
+                                textSize = 14.sp,
+                            ),
+                            axis = LineComponent(
+                                color = CustomTheme.Colors.stroke.toArgb(),
+                                thicknessDp = 1.dp.value,
+                                strokeColor = CustomTheme.Colors.stroke.toArgb(),
+                            ),
+                            guideline = LineComponent(
+                                color = CustomTheme.Colors.stroke.toArgb(),
+                                thicknessDp = 1.dp.value,
+                            ),
+                        ),
+                    )
                 }
             }
         }
@@ -126,7 +207,8 @@ fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewMode
 private fun ItemCard(header: String, value: String) {
     Column(
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(horizontal = 10.dp)
     ) {
         Text(
             text = header,
