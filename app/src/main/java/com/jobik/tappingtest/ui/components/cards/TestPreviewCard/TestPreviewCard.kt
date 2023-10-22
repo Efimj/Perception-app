@@ -5,16 +5,18 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jobik.tappingtest.database.models.TestDuration
 import com.jobik.tappingtest.ui.theme.CustomTheme
 
 data class TestDescription(
     val title: String,
     val description: String,
     val completionCount: Int,
-    val passingTime: Int,
+    val testDuration: TestDuration,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,6 +26,8 @@ fun TestPreviewCard(
     testDescription: TestDescription,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Card(
         onClick = onClick,
         modifier = modifier,
@@ -60,7 +64,7 @@ fun TestPreviewCard(
                     Spacer(modifier = Modifier.width(5.dp))
                 }
                 Text(
-                    text = "Passing time ${testDescription.passingTime}",
+                    text = testDescription.testDuration.getLocalizedValue(context = context).lowercase(),
                     color = CustomTheme.Colors.textSecondary,
                     fontSize = 16.sp,
                     overflow = TextOverflow.Ellipsis,

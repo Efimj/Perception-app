@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tapping_test_name">Tapping test</string>
+    <string name="tapping_test_description">Influences the strength of the nervous system</string>
+</resources>
