@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TappingTest</string>
+    <string name="app_name">Perception</string>
     // test duration
     <string name="quick">Quick</string>
     <string name="medium">Medium</string>
