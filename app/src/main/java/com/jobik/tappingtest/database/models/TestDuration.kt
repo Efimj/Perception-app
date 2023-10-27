@@ -1,8 +1,10 @@
 package com.jobik.tappingtest.database.models
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.jobik.tappingtest.R
 
+@Keep
 enum class TestDuration(val durationInMinutes: Int) {
     QUICK(5),
     MEDIUM(15),
