@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.jobik.tappingtest'
+    namespace 'com.jobik.perception'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.jobik.tappingtest"
+        applicationId "com.jobik.perception"
         minSdk 27
         targetSdk 34
         versionCode 1
