@@ -1,4 +1,4 @@
-package com.jobik.perception.database.dao
+package com.jobik.perception.database.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
