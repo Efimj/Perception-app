@@ -1,4 +1,4 @@
-package com.jobik.perception.database.models
+package com.jobik.perception.database.entities
 
 import android.content.Context
 import androidx.annotation.Keep

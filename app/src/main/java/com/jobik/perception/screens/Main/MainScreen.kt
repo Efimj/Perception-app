@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.jobik.perception.R
-import com.jobik.perception.database.models.TestDuration
+import com.jobik.perception.database.entities.TestDuration
 import com.jobik.perception.ui.components.cards.TestPreviewCard.TestDescription
 import com.jobik.perception.ui.components.cards.TestPreviewCard.TestPreviewCard
 import com.jobik.perception.navigation.AppScreens
