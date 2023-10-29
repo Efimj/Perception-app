@@ -8,7 +8,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
-import com.jobik.perception.database.PerceptionDB
+import com.jobik.perception.database.daos.TestResultDao
 import com.jobik.perception.helpers.saveImageToInternalStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,8 +20,7 @@ data class StatisticsScreenState(
 @HiltViewModel
 class StatisticsViewModel @Inject constructor(
     private val application: Application,
-//    private val perceptionBD: PerceptionDB,
-//    private val testResultRepository: TestResultRepository
+    testResultDao: TestResultDao
 ) : ViewModel() {
 
     private val _screenState = mutableStateOf(StatisticsScreenState())
@@ -30,7 +29,7 @@ class StatisticsViewModel @Inject constructor(
     init {
         val userImage = application.applicationContext.getFileStreamPath(UserImageName)
         _screenState.value = _screenState.value.copy(userImageUri = userImage.toUri())
-        Log.d("dw", perceptionBD.testResultDao().findByTestId(1) .toString())
+        Log.d("dw", testResultDao.findByTestId(1) .toString())
     }
 
     fun changeUserImage(uri: Uri) {
