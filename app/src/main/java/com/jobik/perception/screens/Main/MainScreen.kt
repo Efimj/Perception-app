@@ -14,10 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.jobik.perception.R
 import com.jobik.perception.database.entities.TestDuration
-import com.jobik.perception.ui.components.cards.TestPreviewCard.TestDescription
-import com.jobik.perception.ui.components.cards.TestPreviewCard.TestPreviewCard
 import com.jobik.perception.navigation.AppScreens
 import com.jobik.perception.ui.components.bars.NavigationBottomBar.BottomAppBarHeight
+import com.jobik.perception.ui.components.cards.TestPreviewCard.TestDescription
+import com.jobik.perception.ui.components.cards.TestPreviewCard.TestPreviewCard
 import com.jobik.perception.ui.theme.CustomTheme
 
 @Composable
@@ -43,7 +43,7 @@ fun MainScreen(navController: NavController) {
                     testDuration = TestDuration.QUICK
                 )
             ) {
-                navController.navigate(AppScreens.TappingTestScreen.route)
+                navController.navigate(AppScreens.TestPreview.testId("1"))
             }
         }
     }

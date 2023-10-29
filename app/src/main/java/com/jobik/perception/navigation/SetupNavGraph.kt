@@ -1,7 +1,8 @@
 package com.jobik.perception.navigation
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -10,6 +11,7 @@ import com.jobik.perception.screens.Main.MainScreen
 import com.jobik.perception.screens.Settings.SettingsScreen
 import com.jobik.perception.screens.Statistics.StatisticsScreen
 import com.jobik.perception.screens.TappingTest.TappingTestScreen
+import com.jobik.perception.screens.TestPreview.TestPreview
 
 @Composable
 fun SetupNavGraph(
@@ -70,6 +72,14 @@ fun SetupNavGraph(
             exitTransition = { slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(200)) }
         ) {
             SettingsScreen(navController)
+        }
+
+        composable(
+            route = AppScreens.TestPreview.route,
+            //enterTransition = { slideInHorizontally(initialOffsetX = { it }, animationSpec = tween(200)) },
+            //exitTransition = { slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(200)) }
+        ) {
+            TestPreview(navController)
         }
 
         composable(

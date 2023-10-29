@@ -8,11 +8,11 @@ import java.time.LocalDateTime
 
 @Entity(
     tableName = "statistics",
-    indices = [Index("test_id")],
+    indices = [Index("test_name")],
 )
 data class TestResult(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long = 0,
-    @ColumnInfo(name = "test_id") val testId: Long,
+    @ColumnInfo(name = "test_name") val testName: String,
     @ColumnInfo(name = "steps") val steps: String,
     @ColumnInfo(name = "result") val result: String,
     @ColumnInfo(name = "test_duration_seconds") val testDurationSeconds: Int,

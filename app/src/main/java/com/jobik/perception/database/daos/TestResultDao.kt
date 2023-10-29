@@ -11,7 +11,7 @@ interface TestResultDao {
     @Query("SELECT * FROM statistics")
     fun getAll(): Flow<List<TestResult>>
 
-    @Query("SELECT * FROM statistics WHERE test_id = :testId")
+    @Query("SELECT * FROM statistics WHERE test_name = :testId")
     fun findByTestId(testId: Long): Flow<List<TestResult>>
 
     @Insert

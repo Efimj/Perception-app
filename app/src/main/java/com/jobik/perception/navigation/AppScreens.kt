@@ -3,8 +3,17 @@ package com.jobik.perception.navigation
 import androidx.annotation.Keep
 
 @Keep
+const val ArgumentTestName = "testName"
+
+@Keep
 sealed class AppScreens(val route: String) {
     data object MainScreen : AppScreens(route = "MainScreen")
+    data object TestPreview : AppScreens(route = "TestPreview/{$ArgumentTestName}") {
+        fun testId(testName: String): String {
+            return this.route.replace(oldValue = "{$ArgumentTestName}", newValue = testName)
+        }
+    }
+
     data object TappingTestScreen : AppScreens(route = "TappingTestScreen")
     data object Statistics : AppScreens(route = "Statistics")
     data object Settings : AppScreens(route = "Settings")
