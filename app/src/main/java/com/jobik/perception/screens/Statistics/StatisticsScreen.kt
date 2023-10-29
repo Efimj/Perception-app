@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -27,6 +28,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.jobik.perception.helpers.formatNumberToString
+import com.jobik.perception.helpers.formatSecondsToString
 import com.jobik.perception.ui.components.bars.NavigationBottomBar.BottomAppBarHeight
 import com.jobik.perception.ui.components.buttons.Button.CustomButton
 import com.jobik.perception.ui.components.charts.CustomLineChart
@@ -35,6 +38,7 @@ import com.patrykandpatrick.vico.core.entry.entryModelOf
 
 @Composable
 fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewModel = hiltViewModel()) {
+    val context = LocalContext.current
     val galleryLauncher =
         rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
             it?.let {
@@ -110,9 +114,21 @@ fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewMode
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
-                    ItemCard(header = "Finished", value = "13")
-                    ItemCard(header = "Progress", value = "23%")
-                    ItemCard(header = "Time", value = "2023m")
+                    ItemCard(
+                        header = "Finished",
+                        value = formatNumberToString(
+                            number = viewModel.screenState.value.countFinished.toLong(),
+                            context = context
+                        )
+                    )
+                    ItemCard(header = "Progress", value = "${viewModel.screenState.value.progress}%")
+                    ItemCard(
+                        header = "Time",
+                        value = formatSecondsToString(
+                            seconds = viewModel.screenState.value.allTestTimeSeconds,
+                            context = context
+                        )
+                    )
                 }
             }
         }

@@ -15,8 +15,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.jobik.perception.ui.components.buttons.Button.CustomButton
 import com.jobik.perception.navigation.AppScreens
+import com.jobik.perception.ui.components.buttons.Button.CustomButton
 import com.jobik.perception.ui.theme.CustomTheme
 
 const val BottomAppBarHeight = 60
@@ -73,5 +73,5 @@ private fun goToPage(
     if (navController.currentDestination?.route?.substringBefore("/") == rout.substringBefore("/")) {
         return
     }
-    navController.navigate(rout) { launchSingleTop }
+    navController.navigate(route = rout) { launchSingleTop; popUpTo(rout) { inclusive = true }; }
 }

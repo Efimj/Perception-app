@@ -15,6 +15,7 @@ data class TestResult(
     @ColumnInfo(name = "test_id") val testId: Long,
     @ColumnInfo(name = "steps") val steps: String,
     @ColumnInfo(name = "result") val result: String,
+    @ColumnInfo(name = "test_duration_seconds") val testDurationSeconds: Int,
     @ColumnInfo(name = "created_at") val createdAt: LocalDateTime = LocalDateTime.now(),
     @ColumnInfo(name = "updated_at") val updatedAt: LocalDateTime = LocalDateTime.now(),
 )
